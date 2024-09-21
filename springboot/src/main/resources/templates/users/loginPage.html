@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>登入</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+
+<div class="container">
+
+<h1>登入畫面</h1>
+
+<form th:action="@{/users/loginPost}" method="post">
+  <div class="mb-3">
+    <label for="InputEmail1" class="form-label">帳號</label>
+    <input type="text" name="userMail" required class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">請輸入登入帳號</div>
+  </div>
+  <div class="mb-3">
+    <label for="InputPassword1" class="form-label">密碼</label>
+    <input type="password" name="userPwd" required class="form-control" id="InputPassword1">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">送出</button>
+</form>
+
+<div th:text="${okMsg}"></div>
+<div th:text="${errorMsg}"></div>
+
+</div>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

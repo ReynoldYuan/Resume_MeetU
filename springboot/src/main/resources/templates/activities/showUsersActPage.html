@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>我的活動</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+    <h1>我的活動</h1>
+    <th:block th:each="oneAct : ${ActList}">
+        <div class="card">
+            <div class="card-header">
+                檢舉狀態:<span th:text="${oneAct.activitiesReportStatus}"></span>
+            </div>
+            <div class="card-header">
+                活動類型:<span th:text="${oneAct.activitiesType}"></span>
+            </div>
+            <div class="card-header">
+                圖片:<img width="300px" th:src="@{/photos/download(id=${oneAct.activitiesId})}" />
+            </div>
+            <div class="card-header">
+                活動名稱:<span th:text="${oneAct.activitiesTitle}"></span>
+            </div>
+            <div class="card-header">
+                開始時間:<span th:text="${oneAct.activitiesStartDate}"></span>
+            </div>
+            <div class="card-header">
+                結束時間:<span th:text="${oneAct.activitiesEndDate}"></span>
+            </div>
+            <div class="card-header">
+                活動地點:<span th:text="${oneAct.activitiesLocation}"></span>
+            </div>
+            <div class="card-header">
+                審核時間:<span th:text="${oneAct.activitiesVerifyDate}"></span>
+            </div>
+            <div class="card-header">
+                活動簡介:<span th:text="${oneAct.activitiesContent}"></span>
+            </div>
+            <div class="card-header">
+                分攤選項:<span th:text="${oneAct.activitiesSharing}"></span>
+            </div>
+            <div class="card-header">
+                活動金額:<span th:text="${oneAct.activitiesAmt}"></span>
+            </div>
+            <div class="card-header">
+                人數上限:<span th:text="${oneAct.activitiesMaxPeo}"></span>
+            </div>
+            <div class="card-header">
+                活動標籤:<span th:text="${oneAct.activitiesTagId}"></span>
+            </div>
+            <div class="card-body">
+	                <a class="btn btn-outline-danger btn-sm" th:href="@{/activities/update(activitiesId=${oneAct.activitiesId})}">編輯</a>
+                <a class="btn btn-outline-danger btn-sm" th:href="@{/activities/delete(activitiesId=${oneAct.activitiesId})}">刪除</a>
+<!--                 <a class="btn btn-outline-danger btn-sm" th:href="@{/activities/addComment(id=${oneAct.activitiesId})}">留言</a> -->
+                <a class="btn btn-outline-danger btn-sm" th:href="@{/collect/add(activitiesId=${oneAct.activitiesId})}">❤️</a>
+                
+            </div>
+            
+            <div class="card-footer">
+  			  <h4>留言</h4>
+    		<form th:action="@{/activities/addCommentPost}" method="post">
+      		  <input type="hidden" name="activityId" th:value="${oneAct.activitiesId}" />
+       			 <textarea name="messageContent" placeholder="在想什麼.." required></textarea>
+       	 <button type="submit">留言</button>
+  			  </form>
+				</div>
+            
+             <div class="card-footer">
+                <h4>活動留言</h4>
+                <div class="card-header">
+            </div>
+                <ul>
+                    <li th:each="comment : ${commentsByActivityId[oneAct.activitiesId]}">
+                    留言者:<span th:text="${comment.users.userId}"></span>
+                    內容:<span th:text="${comment.messageContent}"></span>
+               		時間:<span th:text="${comment.messageTime}"></span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <br>
+    </th:block>
+    
+</div>
+</body>
+</html>

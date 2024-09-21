@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>個人資料</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+<h1>個人資料</h1>
+
+<table>
+	<tr>
+		<th>姓名 : </th>
+		<td th:text="${userProfile.usersProfile.userName}"></td>
+	</tr>
+	<tr>
+		<th>帳號 : </th>
+		<td th:text="${userProfile.userMail}"></td>
+	</tr>
+	<tr>
+		<th>密碼 : </th>
+		<td th:text="${userProfile.userPwd}"></td>
+	</tr>
+	<tr>
+		<th>性別 : </th>
+		<td th:text="${userProfile.usersProfile.userGender}"></td>
+	</tr>
+	<tr>
+		<th>生日 : </th>
+		<td th:text="${userProfile.usersProfile.userBirth}"></td>
+	</tr>
+	<tr>
+		<th>居住地 : </th>
+		<td th:text="${userProfile.usersProfile.userLocation}"></td>
+	</tr>
+	<tr>
+		<th>工作 : </th>
+		<td th:text="${userProfile.usersProfile.userJob}"></td>
+	</tr>
+	<tr>
+		<th>職務 : </th>
+		<td th:text="${userProfile.usersProfile.userJobPosi}"></td>
+	</tr>
+	<tr>
+		<th>興趣 : </th>
+		<td th:text="${userProfile.usersProfile.userHobby}"></td>
+	</tr>
+	<tr>
+		<th>感興趣的聚會 : </th>
+		<td th:text="${userProfile.usersProfile.userPreferAct}"></td>
+	</tr>
+	<tr>
+		<th>想配對的性別 : </th>
+		<td th:text="${userProfile.usersProfile.userPreferGen}"></td>
+	</tr>
+	<tr>
+		<th>交友偏好 : </th>
+		<td th:text="${userProfile.usersProfile.userFind}"></td>
+	</tr>
+	<tr>
+		<th>想配對的最大年齡 : </th>
+		<td th:text="${userProfile.usersProfile.userPreferAgeMax}"></td>
+	</tr>
+	<tr>
+		<th>想配對的最小年齡 : </th>
+		<td th:text="${userProfile.usersProfile.userPreferAgeMin}"></td>
+	</tr>
+	<tr>
+		<th>自我介紹 : </th>
+		<td th:text="${userProfile.usersProfile.userIntroduction}"></td>
+	</tr>
+	<tr>
+		<th>個人照片 : </th>
+		<td th:text="${userProfile.usersProfile.userPics}"></td>
+	</tr>
+	<tr>
+		<td><a th:href="@{/users/update/${userProfile.userId}}">編輯</a></td>
+		<td><a th:href="@{/users/delete/${userProfile.userId}}">刪除</a></td>
+	</tr>
+	
+</table>
+
+</div>
+</body>
+</html>

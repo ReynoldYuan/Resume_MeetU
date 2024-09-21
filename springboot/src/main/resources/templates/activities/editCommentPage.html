@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>編輯訊息</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+
+<div class="container">
+  <h1>編輯訊息</h1>
+  
+  <form th:action="@{/activitiesComment/updatePost}" th:object="${actComment}" method="post">
+  
+  <input th:field="*{activitiesCommentId}" type="hidden" />
+  
+  <input th:field="*{activitiesReportStatus}" type="hidden" />
+  
+<!--   <input th:field="*{actComment.users.userId}" type="hidden" /> -->
+  
+  <input th:field="*{messageTime}" type="hidden" />
+  
+  <textarea th:field="*{messageContent}" class="form-control"></textarea>
+  
+   <button type="submit" class="btn btn-primary">送出</button>
+  </form>
+
+</div>
+
+
+
+</body>
+</html>

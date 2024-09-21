@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:replace="~{layout/navbar}"></div>
+    <div class="container">
+        <h1>編輯貼文</h1>
+        <form th:action="@{/posts/update/{id}(id=${post.postId})}" th:object="${post}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="caption">內容</label>
+                <input type="text" class="form-control" id="caption" name="caption" th:field="*{caption}" />
+            </div>
+            <div class="form-group">
+                <label for="imageFile">圖片</label>
+                <input type="file" class="form-control" id="imageFile" name="imageFile" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="videoFile">影片</label>
+                <input type="file" class="form-control" id="videoFile" name="videoFile" accept="video/*">
+            </div>
+            <button type="submit" class="btn btn-success">儲存</button>
+            <a th:href="@{/posts/postsList}" class="btn btn-secondary">取消</a>
+        </form>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

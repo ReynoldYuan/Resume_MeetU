@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>我的收藏活動</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+	<div class="container">
+
+		<h1>我的收藏活動</h1>
+        
+        <th:block th:each=" oneAct : ${CollectList}">
+		<div class="card">
+			<div class="card-header">
+				檢舉狀態:<span th:text="${oneAct.activities.activitiesReportStatus}"></span>
+			</div>
+			<div class="card-header">
+				活動類型:<span th:text="${oneAct.activities.activitiesType}"></span>
+			</div>
+			<div class="card-header">
+				圖片:<span ><img width="300px" th:src="@{/photos/download(id=${oneAct.activities.activitiesId})}" /></span>
+			</div>
+			<div class="card-header">
+				活動名稱:<span th:text="${oneAct.activities.activitiesTitle}"></span>
+			</div>
+			<div class="card-header">
+				開始時間:<span th:text="${oneAct.activities.activitiesStartDate}"></span>
+			<div class="card-header">
+				結束時間:<span th:text="${oneAct.activities.activitiesEndDate}"></span>
+			</div>
+			<div class="card-header">
+				活動地點:<span th:text="${oneAct.activities.activitiesLocation}"></span>
+			</div>
+			<div class="card-header">
+				審核時間:<span th:text="${oneAct.activities.activitiesVerifyDate}"></span>
+			</div>
+			<div class="card-header">
+				活動簡介:<span th:text="${oneAct.activities.activitiesContent}"></span>
+			</div>
+			<div class="card-header">
+				分攤選項:<span th:text="${oneAct.activities.activitiesSharing}"></span>
+			</div>
+			<div class="card-header">
+				活動金額:<span th:text="${oneAct.activities.activitiesAmt}"></span>
+			</div>
+			<div class="card-header">
+				人數上限:<span th:text="${oneAct.activities.activitiesMaxPeo}"></span>
+			</div>
+			<div class="card-header">
+				活動標籤:<span th:text="${oneAct.activities.activitiesTagId}"></span>
+			</div>
+			
+			
+			<div class="card-body">
+			 <a class="btn btn-outline-danger btn-sm"  th:href="@{/collect/delete(activitiesId=${oneAct.activities.activitiesId})}">取消收藏</a>
+
+<!-- 				<p> -->
+<!-- 					<span th:text="${oneMsg.text}"></span> -->
+<!-- 				</p> -->
+<!-- 		    <div th:if="${oneMsg.users != null}"> -->
+<!-- 				<div th:if="${ oneAct.users.id == session.loginUserId }" class="edit-place"> -->
+<!-- 		             <a class="btn btn-outline-secondary btn-sm" th:href="@{/messages/update(id=${oneMsg.id})}">編輯</a> -->
+<!-- 		             <a class="btn btn-outline-secondary btn-sm" >編輯</a> -->
+		             
+<!-- 		             <a class="btn btn-outline-danger btn-sm" >刪除</a> -->
+<!-- 		             <a class="btn btn-outline-danger btn-sm" th:href="@{/messages/delete(id=${oneMsg.id})}">刪除</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			</div>
+		</div>
+		<br>
+        </th:block>
+        
+<!--         <ul class="pagination"> -->
+        
+<!--                上一頁 -->
+<!--         <th:block th:switch="${page.number != 0}"> -->
+        
+<!-- 	        <li th:case="${true}" class="page-item"> -->
+<!-- 	            <a class="page-link" th:href="@{/activities/showAll(p=${page.number})}">上一頁</a> -->
+<!-- 	        </li>  -->
+        
+<!-- 	        <li th:case="${false}" class="page-item disabled"> -->
+<!-- 	            <a class="page-link" th:href="@{/activities/showAll(p=${page.number})}">上一頁</a> -->
+<!-- 	        </li>  -->
+        	
+<!--         </th:block> -->
+        
+<!-- <!--         頁數 --> -->
+<!--         <th:block  th:each=" pageNum  : ${#numbers.sequence(1, page.totalPages)}"> -->
+<!--         <th:block th:switch="${ pageNum != page.number+1}"> -->
+<!--            <li th:case="${true}" class="page-item"> -->
+<!--             <a class="page-link" th:href="@{/activities/showAll(p=${pageNum})}">[[${pageNum}]]</a> -->
+<!--            </li>  -->
+           
+<!--            <li th:case="${false}" class="page-item active"> -->
+<!--             <span class="page-link">[[${pageNum}]]</span> -->
+<!--            </li> -->
+           
+<!--         </th:block> -->
+           
+<!--         </th:block>         -->
+        
+<!--                  下一頁 -->
+<!--          <th:block th:switch="${ page.number+1 == page.totalPages }"> -->
+          
+<!-- 	        <li th:case="${false}" class="page-item"> -->
+<!-- 	            <a class="page-link" th:href="@{/activities/showAll(p=${page.number + 2})}">下一頁</a> -->
+<!-- 	        </li>  -->
+	        
+<!-- 	         <li th:case="${true}" class="page-item disabled"> -->
+<!-- 	            <a class="page-link" th:href="@{/activities/showAll(p=${page.number + 2})}">下一頁</a> -->
+<!-- 	        </li>  -->
+        
+<!--         </th:block> -->
+<!--         </ul> -->
+	</div>
+
+
+</body>
+</html>

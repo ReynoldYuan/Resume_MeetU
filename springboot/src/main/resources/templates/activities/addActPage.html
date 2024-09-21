@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>新增活動</title>
+</head>
+<body>
+	<div th:replace="~{layout/navbar}"></div>
+	<h1>新增活動</h1>
+
+	<form th:action="@{/activities/addPost}" method="post"
+		enctype="multipart/form-data">
+		<!--         活動ID: <input name="activitiesId" type="number" required /> -->
+		<!--         <br > -->
+		<!--         活動檢舉狀態: <input name="activitiesReportStatus" required /> -->
+		<!--         <br > -->
+		<label >活動類型:</label> 
+		<select name="activitiesType" required>
+			<option value="I">室內</option>
+			<option value="O">戶外</option>
+			<option value="M">混合</option>
+		</select> 
+		<br>
+
+		<!--         創辦人id: <input name="hostId"  required /> -->
+		<!--         <br > -->
+		活動圖片: <input name="activitiesPics" type="file" required /> 
+		<br>
+		活動名稱: <input name="activitiesTitle" required /> 
+		<br> 
+		活動開始時間: <input name="activitiesStartDate" type="datetime-local" required /> 
+		<br>
+		活動結束時間: <input name="activitiesEndDate" type="datetime-local" required />
+		<br> 
+		活動地點: <input name="activitiesLocation" required /> 
+		<br>
+		最後報名審核時間: <input name="activitiesVerifyDate" type="datetime-local"
+			required /> 
+		<br> 
+		活動文字簡介:
+		<textarea name="activitiesContent" required></textarea>
+		<br> 
+		<label >分攤選項:</label> 
+		<select name="activitiesSharing" required>
+			<option value="I">我請客</option>
+			<option value="Y">你付錢</option>
+			<option value="S">各付各</option>
+		</select> 
+		<br>
+		活動金額: <input name="activitiesAmt" type="number" required /> 
+		<br>
+		聚會人數上限: <input name="activitiesMaxPeo" type="number" required /> 
+		<br>
+		<!--         活動標籤ID: <input name="activitiesTagId"  required /> -->
+		<!--         <br > -->
+
+		<input type="submit" value="送出" />
+	</form>
+
+	<div th:text="${okMsg}"></div>
+</body>
+</html>

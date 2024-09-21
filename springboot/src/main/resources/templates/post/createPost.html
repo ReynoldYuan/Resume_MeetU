@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+    <div class="container">
+        <h1>新增貼文</h1>
+        <form th:action="@{/posts/create}" method="post" enctype="multipart/form-data"> <!-- Add enctype -->
+            <div class="mb-3">
+                <label for="caption" class="form-label">內容:</label>
+                <input type="text" name="caption" required class="form-control" id="caption">
+            </div>
+            <div class="mb-3">
+                <label for="imageFile" class="form-label">圖片:</label> <!-- Update input type -->
+                <input type="file" name="imageFile" class="form-control" id="imageFile" accept="image/*"> <!-- Accept only images -->
+            </div>
+            <div class="mb-3">
+                <label for="videoFile" class="form-label">影片:</label> <!-- Update input type -->
+                <input type="file" name="videoFile" class="form-control" id="videoFile" accept="video/*"> <!-- Accept only videos -->
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

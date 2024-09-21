@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>貼文列表</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+    <div class="container">
+        <h1>貼文列表</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>內容</th>
+                    <th>圖片</th>
+                    <th>影片</th>
+                    <th>詳細</th>
+                    <th>操作</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.postId}">1</td>
+                    <td th:text="${post.caption}">範例標題</td>
+                    <td>
+                        <img th:if="${post.imageUrl}" th:src="@{${post.imageUrl}}" alt="圖片" class="img-fluid" style="max-width: 100px;"/>
+                    </td>
+                    <td>
+                        <video th:if="${post.videoUrl}" th:src="@{${post.videoUrl}}" controls class="img-fluid" style="max-width: 100px;"></video>
+                    </td>
+                    <td>
+                        <a th:href="@{/posts/postDetail/{id}(id=${post.postId})}" class="btn btn-primary">查看</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/posts/edit/{id}(id=${post.postId})}" class="btn btn-warning">編輯</a>
+                        
+                        <form th:action="@{/posts/{id}(id=${post.postId})}" method="post" style="display:inline;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn btn-danger">刪除</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

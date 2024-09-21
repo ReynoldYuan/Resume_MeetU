@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>修改個人資料</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+<h1>修改個人資料</h1>
+<form th:action="@{/users/updatePost}" method="post">
+	<input th:value="${userUpdate.userId}" type="hidden" name="userId"/>
+
+	<div class="mb-3">
+    <label for="InputEmail1" class="form-label">帳號</label>
+    <input th:value="${userUpdate.userMail}" type="email"  name="userMail" required class="form-control" id="InputEmail1">
+  </div>
+  <div class="mb-3">
+    <label for="InputPassword1" class="form-label">密碼</label>
+    <input th:value="${userUpdate.userPwd}" type="password"  name="userPwd" required class="form-control" id="InputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="InputName1" class="form-label">姓名</label>
+    <input th:value="${userUpdate.usersProfile.userName}" type="text" name="userName" required class="form-control" id="InputName1">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">姓別</label>
+    <label><input th:value="${userUpdate.usersProfile.userGender}" type="radio" name="userGender" required class="form-control" id="InputGender1" value="M">男</label>
+    <label><input th:value="${userUpdate.usersProfile.userGender}" type="radio" name="userGender" required class="form-control" id="InputGender2" value="F">女</label>
+  </div>
+  <div class="mb-3">
+    <label for="InputBirth1" class="form-label">生日</label>
+    <input th:value="${userUpdate.usersProfile.userBirth}" type="date" name="userBirth" required class="form-control" id="InputBirth1">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">居住地</label>
+    <select name="userLocation" required class="form-control" id="InputLocation1">
+    	<option value="a">基隆市</option>
+    	<option value="b">新北市</option>
+    	<option value="c">台北市</option>
+    	<option value="d">桃園市</option>
+    	<option value="e">新竹縣</option>
+    	<option value="f">苗栗縣</option>
+    	<option value="g">台中市</option>
+    	<option value="h">南投縣</option>
+    	<option value="i">彰化縣</option>
+    	<option value="j">雲林縣</option>
+    	<option value="k">嘉義縣</option>
+    	<option value="l">台南市</option>
+    	<option value="m">高雄市</option>
+    	<option value="n">屏東縣</option>
+    	<option value="o">宜蘭縣</option>
+    	<option value="p">花蓮縣</option>
+    	<option value="q">台東縣</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="InputJob1" class="form-label">工作</label>
+    <input th:value="${userUpdate.usersProfile.userJob}" type="text" name="userJob" class="form-control" id="InputJob1">
+  </div>
+  <div class="mb-3">
+    <label for="InputJobPosi1" class="form-label">職務</label>
+    <input th:value="${userUpdate.usersProfile.userJobPosi}" type="text" name="userJobPosi" class="form-control" id="InputJobPosi1">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">興趣</label>
+    <label><input type="checkbox" name="userHobby" class="form-control" id="InputHobby1" value="swim">游泳</label>
+    <label><input type="checkbox" name="userHobby" class="form-control" id="InputHobby2" value="travel">旅遊</label>
+    <label><input type="checkbox" name="userHobby" class="form-control" id="InputHobby3" value="draw">畫畫</label>
+    <label><input type="checkbox" name="userHobby" class="form-control" id="InputHobby4" value="climbing">爬山</label>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">感興趣的聚會</label>
+    <label><input type="radio" name="userPreferAct" required class="form-control" id="InputPreferAct1" value="I">室內</label>
+    <label><input type="radio" name="userPreferAct" required class="form-control" id="InputPreferAct2" value="O">室外</label>
+    <label><input type="radio" name="userPreferAct" required class="form-control" id="InputPreferAct3" value="M">混合</label>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">想配對的性別</label>
+    <label><input type="radio" name="userPreferGen" required class="form-control" id="InputPreferGen1" value="M">男</label>
+    <label><input type="radio" name="userPreferGen" required class="form-control" id="InputPreferGen2" value="F">女</label>
+    <label><input type="radio" name="userPreferGen" required class="form-control" id="InputPreferGen3" value="N">不限</label>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">交友偏好</label>
+    <label><input type="radio" name="userFind" required class="form-control" id="InputFind1" value="E">另外一半</label>
+    <label><input type="radio" name="userFind" required class="form-control" id="InputFind2" value="C">同好</label>
+    <label><input type="radio" name="userFind" required class="form-control" id="InputFind3" value="N">不限</label>
+  </div>
+  <div class="mb-3">
+    <label for="InputMaxAge1">想配對的最大年齡</label>
+    <input th:value="${userUpdate.usersProfile.userPreferAgeMax}" type="range" min="18" max="100" name="userPreferAgeMax" required id="InputMaxAge1">
+    <span id="rangeOutput"></span>
+  </div>
+  <div class="mb-3">
+    <label for="InputMinAge1">想配對的最小年齡</label>
+    <input th:value="${userUpdate.usersProfile.userPreferAgeMin}" type="range" min="18" max="100" name="userPreferAgeMin" required id="InputMinAge1">
+    <span id="rangeOutput2"></span>
+  </div>
+  <div class="mb-3">
+    <label for="InputIntro1" class="form-label">自我介紹</label>
+	<textarea rows="5" cols="10" name="userIntroduction" class="form-control" id="InputIntro1">${userUpdate.usersProfile.userIntroduction}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="InputPhoto1" class="form-label">個人照片</label>
+    <input type="file" accept="image/*" name="userPics" class="form-control" id="InputPhoto1">
+  </div>
+  <div>
+	<!-- 前端預覽圖片 -->
+	<img th:src="@{/image/noimage.png}" style="width: 200px; border: 1px solid black; margin-top: 10px" />
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">送出</button>
+</form>
+<div th:text="${okMsg}"></div>
+<div th:text="${errorMsg}"></div>
+</div>
+
+<script>
+	const range = document.querySelector("input[name='userPreferAgeMax']");
+	const range2 = document.querySelector("input[name='userPreferAgeMin']");
+
+	range.addEventListener('click', ()=>{
+		rangeOutput.innerText = range.value;
+	})
+	
+	range2.addEventListener('click', ()=>{
+		rangeOutput2.innerText = range2.value;
+	})
+	
+	const userPhotoInput = document.querySelector("input[name='userPics']");
+	const img = document.querySelector("img");
+		
+	img.addEventListener("click", () => {
+		userPhotoInput.click();
+	})
+		
+	userPhotoInput.addEventListener("change", () => {
+		const file = userPhotoInput.files[0];
+
+		if (file == undefined) {
+			img.src = "/image/noimage.png";
+			return;
+		}
+
+		const tempURL = URL.createObjectURL(file);
+		img.src = tempURL;
+	});
+</script>
+</body>
+</html>

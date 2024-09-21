@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>每日配對</title>
+</head>
+<body>
+	<div th:replace="~{layout/navbar}"></div>
+
+	<div class="container">
+	登入者資料<div th:text="${session.loginUser.usersProfile}"></div>
+
+		<div th:each="matchingCard : ${session.matchingCard}">
+			<div style="border: 1px solid black; margin: 10px; padding: 10px">
+				<div th:text="${matchingCard}"></div>
+				<form th:action="@{/matching/like}" method="post" style="margin-bottom: 10px">
+					<button type="submit" class="btn btn-primary" name="likeUserId"
+						th:value="${matchingCard.userId}">喜歡</button>
+				</form>
+				<form th:action="@{/matching/unlike}" method="post">
+					<button type="submit" class="btn btn-primary" name="unlikeUserId"
+						th:value="${matchingCard.userId}">不喜歡</button>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

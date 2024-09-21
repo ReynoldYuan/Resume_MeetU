@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="~{layout/navbar}"></div>
+
+	<div class="container">
+		<h1>(他人)會員資料</h1>
+
+		<form th:action="@{/users/checkUserPage}" method="post">
+			<div class="mb-3">
+				請輸入欲察看id<input type="text" name="userId" required
+					class="form-control" id="userId" />
+			</div>
+			<button type="submit" class="btn btn-primary">送出</button>
+		</form>
+
+		<div th:if="${session.okMsg != null}" th:text="${session.okMsg}"></div>
+		<div th:if="${session.errorMsg != null}" th:text="${session.errorMsg}"></div>
+
+		<div
+			th:if="${session.usersProfile != null and session.usersProfile.users != null}">
+			<div
+				th:text="'userIsBan: ' + ${session.usersProfile.users.userIsBan}"></div>
+
+			<div th:if="${session.usersProfile.users.userIsBan != 'D'}">
+				<div th:text="${session.usersProfile}"></div>
+				<div th:if="${session.followeeNum != null}"
+					th:text="${session.followeeNum}"></div>
+				人追蹤中
+				<div th:if="${session.followerNum != null}"
+					th:text="${session.followerNum}"></div>
+				位粉絲 <br>
+			</div>
+		</div>
+
+		<hr>
+		登入者資料
+		<div th:if="${session.loginUser != null}"
+			th:text="${session.loginUser}"></div>
+
+		<!-- 確保 session.loginUser、session.usersProfile 和 session.usersProfile.users 不為 null -->
+		<div
+			th:if="${session.loginUser != null 
+            and session.usersProfile != null 
+            and session.usersProfile.users != null
+            and session.loginUser.userId != session.usersProfile.userId
+            and session.usersProfile.users.userIsBan != 'D'}">
+			<div th:if="${session.followMsg != null}">
+				<div th:if="${!session.followMsg}">
+					想追蹤的ID:
+					<div th:text="${session.usersProfile.userId}"></div>
+					<form th:action="@{/users/followPost}" method="post">
+						<button type="submit" class="btn btn-primary" name="userId"
+							th:value="${session.usersProfile.userId}">追蹤</button>
+					</form>
+				</div>
+				<div th:if="${session.followMsg}">
+					<form th:action="@{/users/unfollowPost}" method="post">
+						<button type="submit" class="btn btn-primary" name="userId"
+							th:value="${session.usersProfile.userId}">取消追蹤</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div th:if="${session.followSuccessfully != null}"
+			th:text="${session.followSuccessfully}"></div>
+	</div>
+
+
+</body>
+</html>

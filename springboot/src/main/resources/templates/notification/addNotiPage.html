@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>新增通知</title>
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+	<div class="container">
+		<h1>新增通知</h1>
+
+		<div class="card">
+			<div class="card-header">請填入新訊息</div>
+			<div class="card-body">
+
+				<form th:action="@{/notification/addPost}" method="post">
+
+					<div class="mb-3">
+						<label class="form-label">接收人</label>
+						<select class="form-select" name="notificationUserId">
+							<option></option>
+							<option th:each="user : ${usersList}" th:value="${user.userId}" th:text="${user.userMail}"></option>
+						</select>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">通知標題</label>
+						<input class="form-control"	name="notificationTitle" />
+					</div>
+
+					<div>通知內容</div>
+					<textarea class="form-control" name="notificationContent"></textarea>
+
+
+					<br>
+					<button type="submit" class="btn btn-primary">送出</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>編輯通知</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+		<h1>編輯通知</h1>
+
+<div class="card">
+			<div class="card-header">請輸入欲編輯的訊息</div>
+			<div class="card-body">
+
+				<form th:action="@{/notification/updatePost}" th:object="${notiById}" method="post">
+				<input type="hidden" th:field="*{notificationId}" />
+				<input type="hidden" th:field="*{notificationTime}" />
+				<input type="hidden" th:field="*{notificationRead}" />
+				
+					<div class="mb-3">
+						<label class="form-label">接收人</label>
+						<select class="form-select" th:field="*{users.userId}">
+						<option th:each="user : ${usersList}" 
+                                th:value="${user.userId}" 
+                                th:text="${user.userMail}"
+                                th:selected="${user.userId == notiById.users.userId}">
+                        </option>
+<!-- 							<option th:field="*{userMail}"></option> -->
+<!-- 							<option></option> -->
+<!-- 							<option th:field="*{userMail}" th:each="user : ${usersList}" th:value="${user.userId}" th:text="${user.userMail}"></option> -->
+						</select>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">通知標題</label>
+						<input th:field="*{notificationTitle}" class="form-control"	name="notificationTitle" />
+					</div>
+
+					<div>通知內容</div>
+					<textarea th:field="*{notificationContent}" class="form-control" name="notificationContent"></textarea>
+
+
+					<br>
+					<button type="submit" class="btn btn-primary">送出</button>
+					<a th:href="@{/notification/list}" class="btn btn-secondary">取消</a>
+				</form>
+			</div>
+		</div>
+
+
+</div>
+			<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

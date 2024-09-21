@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>通知列表</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<style>
+        .button-container {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+		<h1>所有通知</h1>
+		
+		<div class="accordion" id="accordionExample">
+		<th:block th:each="oneNoti, iterStat : ${notiList}">
+            <div class="accordion-item">
+            
+            <h2 class="accordion-header" th:id="'heading' + ${iterStat.index}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            th:data-bs-target="'#collapse' + ${iterStat.index}"
+                            aria-expanded="false" th:aria-controls="'collapse' + ${iterStat.index}">
+                        <span class="me-5">收件人: <span th:text="${oneNoti.users.userMail}"></span></span>
+                        <span class="me-5">標題: <span th:text="${oneNoti.notificationTitle}"></span></span>
+                        <span>通知時間: <span th:text="${#dates.format(oneNoti.notificationTime,'yyyy-MM-dd HH:mm:ss EEEE')}"></span></span>
+                    </button>
+                </h2>
+            
+                <div th:id="'collapse' + ${iterStat.index}" class="accordion-collapse collapse"
+                     th:aria-labelledby="'heading' + ${iterStat.index}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body position-relative">
+                    <p>
+						<span th:text="${oneNoti.notificationContent}"></span>
+					</p>
+					
+					<div class="button-container">
+						<!--插入編輯按鈕 -->
+						<a class="btn btn-outline-secondary btn-sm" th:href="@{/notification/update(id=${oneNoti.notificationId})}">編輯</a>
+						<!--插入刪除按鈕 -->
+						<a class="btn btn-outline-danger btn-sm" th:href="@{/notification/delete(id=${oneNoti.notificationId})}">刪除</a>
+					</div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+		</th:block>
+		
+		</div>
+			<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+		
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Post Detail</h1>
+        <div>
+            <label>ID:</label>
+            <span th:text="${post.postId}">1</span>
+        </div>
+        <div>
+            <label>內容:</label>
+            <span th:text="${post.caption}">Sample Caption</span>
+        </div>
+        <div>
+            <label>圖片:</label>
+            <img th:if="${post.imageUrl}" th:src="@{${post.imageUrl}}" alt="Image" class="img-fluid"/>
+        </div>
+        <div>
+            <label>影片:</label>
+            <div th:if="${post.videoUrl}">
+                <video th:src="@{${post.videoUrl}}" controls class="img-fluid"></video>
+            </div>
+        </div>
+
+        <form th:action="@{/posts/delete/{id}(id=${post.postId})}" method="post">
+            <button type="submit" class="btn btn-danger">刪除貼文</button>
+        </form>
+        <a th:href="@{/posts/edit/{id}(id=${post.postId})}" class="btn btn-primary">編輯貼文</a>
+    </div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

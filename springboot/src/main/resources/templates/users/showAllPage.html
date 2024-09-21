@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>所有帳號</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar}"></div>
+<div class="container">
+<h1>所有帳號</h1>
+<table>
+	<tr>
+		<th>姓名</th>
+		<th>帳號</th>
+		<th>密碼</th>
+		<th>性別</th>
+		<th>生日</th>
+		<th>居住地</th>
+		<th>工作</th>
+		<th>職務</th>
+		<th>興趣</th>
+		<th>感興趣的聚會</th>
+		<th>想配對的性別</th>
+		<th>交友偏好</th>
+		<th>想配對的最大年齡</th>
+		<th>想配對的最小年齡</th>
+		<th>自我介紹</th>
+		<th>照片</th>
+		<th>VIP</th>
+		<th>是否被Ban掉</th>
+	</tr>
+	<th:block th:each="all : ${allUsersProfile}">
+	<tr>
+		<td th:text=${all.usersProfile.userName}></td>
+		<td th:text=${all.userMail}></td>
+		<td th:text=${all.userPwd}></td>
+		<td th:text=${all.usersProfile.userGender}></td>
+		<td th:text=${all.usersProfile.userBirth}></td>
+		<td th:text=${all.usersProfile.userLocation}></td>
+		<td th:text=${all.usersProfile.userJob}></td>
+		<td th:text=${all.usersProfile.userJobPosi}></td>
+		<td th:text=${all.usersProfile.userHobby}></td>
+		<td th:text=${all.usersProfile.userPreferAct}></td>
+		<td th:text=${all.usersProfile.userPreferGen}></td>
+		<td th:text=${all.usersProfile.userFind}></td>
+		<td th:text=${all.usersProfile.userPreferAgeMax}></td>
+		<td th:text=${all.usersProfile.userPreferAgeMin}></td>
+		<td th:text=${all.usersProfile.userIntroduction}></td>
+		<td th:text=${all.usersProfile.userPics}></td>
+		<td th:text=${all.vip}></td>
+		<td th:text=${all.userIsBan}></td>
+	</tr>
+	</th:block>
+</table>
+</div>
+</body>
+</html>
