@@ -7,21 +7,21 @@ We are a group of students just beginning to learn programming, and this project
 [Emerald](https://github.com/HollaWord) , [Benson](https://github.com/chengyu9072) , [Noel](https://github.com/Noelyan1995), [Jayson](https://github.com/jaysonyang503) , [ReynoldYuan](https://github.com/ReynoldYuan)
 
 **MeetU** includes the following features:
-- **Member creation, update, and deletion, with Google login**
+- **User CRUD, google login**
 - **Daily random matching (limited to 3 people per day)**
 - **Posts and comments**
-- **One-on-one and group chat**
-- **Follow feature**
-- **Host, register, review, and favorite activities**
-- **Real-time system notifications to individual or all users**
-- **User blocking mechanism**
-- **Report feature for users, activities, and comments**
+- **One-on-one and group chatroom**
+- **Follow/unfollow**
+- **Activities CRUD, approval for joinning request**
+- **Real-time notifications to individual or all users**
+- **Block/unblock users**
+- **Report for users, activities, and comments**
 
 ### Technology Stack
 - **Backend**: Spring Boot
 - **Frontend**: Vue 3
-- **Database**: Microsoft SQL Server (MSSQL)
-- **Real-time communication**: WebSocket, polling
+- **Database**: MSSQL
+- **Real-time notifications and chatroom**: WebSocket, polling
 
 # For more details, please refer to our MeetU.pptx and demo video
 Due to the large file size of the PPT (which includes video), please view it directly at the following link:  
