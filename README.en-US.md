@@ -3,6 +3,9 @@
 ### Purpose of This Project
 We are a group of students just beginning to learn programming, and this project is our final-term assignment. The **MeetU** platform allows users to create accounts, make friends, and even search for true love online. Our goal is to make it easier to foster real-life relationships compared to traditional dating apps.
 
+### Team Member
+[Emerald](https://github.com/HollaWord) , [Benson](https://github.com/chengyu9072) , [Noel](https://github.com/Noelyan1995), [Jayson](https://github.com/jaysonyang503) , [ReynoldYuan](https://github.com/ReynoldYuan)
+
 **MeetU** includes the following features:
 - **Member creation, update, and deletion, with Google login**
 - **Daily random matching (limited to 3 people per day)**

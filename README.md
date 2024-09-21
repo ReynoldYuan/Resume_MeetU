@@ -3,6 +3,9 @@
 ### 專案目的
 我們是一群剛開始學習程式設計的學生，這個專案是我們的期末專題。**MeetU** 平台讓用戶可以創建帳號、結交朋友，甚至在線上尋找真愛。我們的目標是，與傳統交友應用相比，讓用戶更容易建立現實生活中的關係。
 
+### 專案成員
+[Emerald](https://github.com/HollaWord) , [Benson](https://github.com/chengyu9072) , [Noel](https://github.com/Noelyan1995), [Jayson](https://github.com/jaysonyang503) , [ReynoldYuan](https://github.com/ReynoldYuan)
+
 **MeetU** 包含以下功能：
 - **會員創建/修改/註銷，及googole登入**
 - **每日隨機配對(目前設定一天上限為3位)**
