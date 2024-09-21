@@ -21,7 +21,7 @@
 - **即時通訊**: WebSocket, polling
 
 # 細節請參閱我們的 MeetU.pptx 和展示影片
-因PPT包含影片檔造成檔案較大，請直接於下方網址查看：
+因PPT包含影片檔造成檔案較大，請直接於下方網址查看：</br>
 https://1drv.ms/p/s!Ark_lrwm9EcYgbFvUlWK7K1gZgVTtw?e=LRsKnx
 
 ### 安裝說明
